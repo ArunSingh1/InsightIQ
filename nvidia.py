@@ -72,11 +72,13 @@
 #   if chunk.choices[0].delta.content is not None:
 #     print(chunk.choices[0].delta.content, end="")
 
+
+
 from langchain_nvidia_ai_endpoints import ChatNVIDIA
 
 client = ChatNVIDIA(
   model="mistralai/mistral-7b-instruct-v0.3",
-  api_key="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", 
+  api_key="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", 
   temperature=0.2,
   top_p=0.7,
   max_tokens=1024,
@@ -84,3 +86,4 @@ client = ChatNVIDIA(
 
 for chunk in client.stream([{"role":"user","content":"Write a limerick about the wonders of GPU computing."}]): 
   print(chunk.content, end="")
+

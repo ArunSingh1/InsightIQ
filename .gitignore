@@ -1,1 +1,7 @@
 .env
+
+milvusdb.db
+
+venv
+
+.milvusdb.db.lock
