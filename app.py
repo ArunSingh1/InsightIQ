@@ -14,7 +14,7 @@ from langchain_community.document_loaders import TextLoader
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains import create_retrieval_chain
-
+from sqlalchemy import create_engine
 import os
 os.makedirs('./data', exist_ok=True)
 
@@ -100,7 +100,7 @@ Questions:{input}
 
 
 with st.sidebar:
-    st.title("Models")
+    # st.title("Models")
     model_name = st.selectbox(
         "Choose the Model?",
         ("GPT4"),
@@ -108,8 +108,20 @@ with st.sidebar:
     )
 
 
+    # connection
+    dbconnection = st.text_input("Enter the Database Connection URI")
+
+    
+    if st.button("Connect DB") and dbconnection:
+        engine = create_engine(dbconnection)
+        try:
+            with engine.connect() as connection:
+                st.success("Connection successful")
+        except Exception as e:  
+            st.write(f"Failed to connect to the database: {e}")    
+
     st.session_state["upload_status"] = False
-    uploaded_files = st.sidebar.file_uploader("Upload Files", accept_multiple_files=True)
+    uploaded_files = st.sidebar.file_uploader("Upload Files to Vectorize", accept_multiple_files=True)
     if uploaded_files:
         # for file in uploaded_files:
         for uploaded_file in uploaded_files:
@@ -143,10 +155,22 @@ if input_prompt  and st.session_state.vectors is not None:
     # st.write(model_name)
     # st.write(response.content)s
 
+    sql_query_prompt = f"""
+    Translate the following natural language query into an SQL query. If you cannot generate an SQL query, respond with 'No SQL query generated':
+    Query: {input_prompt}
+    """
+
     document_chain=create_stuff_documents_chain(llm,prompt)
     retriever=st.session_state.vectors.as_retriever()
     retrieval_chain=create_retrieval_chain(retriever,document_chain)
     response=retrieval_chain.invoke({'input':input_prompt})
+
+        # Write input_prompt and response['answer'] to queryresults.txt
+    with open("queryresults.txt", "a") as file:
+        file.write(f"Query: {input_prompt}\n")
+        file.write(f"Answer: {response['answer']}\n")
+        file.write("\n" + "-"*50 + "\n\n")
+    
     st.write(response['answer'])
 
 
