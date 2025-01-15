@@ -15,8 +15,17 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains import create_retrieval_chain
 from sqlalchemy import create_engine
+
+from plot import plot_csv_data
+
 import os
 os.makedirs('./data', exist_ok=True)
+
+
+CSV_OUTPUT_DIR = "./output"
+os.makedirs(CSV_OUTPUT_DIR, exist_ok=True)
+CSV_FILE_PATH = os.path.join(CSV_OUTPUT_DIR, 'csv_results.csv')
+
 
 
 load_dotenv()
@@ -85,6 +94,67 @@ def get_model(model_name):
     return models.get(model_name, None)
 
 
+db_url = 'postgresql://postgres:admin@localhost:5432/olist'
+engine = create_engine(db_url)
+import psycopg2
+import csv
+def execute_query_tool(sql_query):
+    try:
+        # Connect to your postgres DB
+
+        formatted_sql_query = f"""{sql_query}"""
+        conn = psycopg2.connect(db_url)
+        # Open a cursor to perform database operations
+        cur = conn.cursor()
+
+        # Execute the SQL query
+        cur.execute(formatted_sql_query)
+
+        # Fetch the result
+        result = cur.fetchall()
+
+        print(result)
+        columns = [desc[0] for desc in cur.description]
+        
+        # Save results to a CSV file
+        # csv_path = os.path.join(CSV_OUTPUT_DIR, 'csv_results.csv')
+        with open(CSV_FILE_PATH, "w", newline="") as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(columns)  # Write headers
+            writer.writerows(result)  # Write rows
+            
+        # Close communication with the database
+            cur.close()
+            conn.close()
+        return True
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
+
+
+
+def analyze_csv_with_llm(csv_path: str):
+    try:
+        # Read CSV content
+        with open(csv_path, "r") as csvfile:
+            reader = csv.reader(csvfile)
+            rows = list(reader)
+        
+        # Prepare a prompt for the LLM
+        header = ", ".join(rows[0])
+        data_sample = "\n".join([", ".join(row) for row in rows[1:6]])  # Use a sample of first 5 rows
+        prompt = (
+            f"Here is a dataset with the following columns: {header}.\n"
+            f"Sample data:\n{data_sample}\n\n"
+            "Analyze this dataset and provide insights, trends, and actionable recommendations."
+        )
+        
+        # Generate insights
+        insights = llm(prompt)
+        return insights
+    except Exception as e:
+        return f"An error occurred during analysis: {str(e)}"
+
 prompt=ChatPromptTemplate.from_template(
 """
 Answer the questions based on the provided context only.
@@ -150,14 +220,28 @@ st.caption("🚀 Unleash Private AI: LLMs Running Securely on Your Device - Powe
 
 input_prompt=st.text_input("Enter Your Question From Documents")
 
+# if input_prompt:
+#     if "vectors" not in st.session_state:
+#         vector_embedding()
+import re
+import pandas as pd
+db_url = 'postgresql://postgres:admin@localhost:5432/olist'
+engine = create_engine(db_url)
+
+
 if input_prompt  and st.session_state.vectors is not None:
     # response = model.invoke(prompt)
     # st.write(model_name)
     # st.write(response.content)s
 
+    # sql_query_prompt = f"""
+    # Translate the following natural language query into an SQL query. If you cannot generate an SQL query, respond with 'No SQL query generated':
+    # Query: {input_prompt}
+    # """
+
     sql_query_prompt = f"""
-    Translate the following natural language query into an SQL query. If you cannot generate an SQL query, respond with 'No SQL query generated':
-    Query: {input_prompt}
+    Based on the provided schema and table details, translate the following natural language query into an SQL query. Ensure the SQL query is as accurate as possible to answer the user’s request and provide explanation of the query's significance in general. If you cannot generate an SQL query, respond with 'No SQL query generated'.
+    Natural Language Query: {input_prompt}
     """
 
     document_chain=create_stuff_documents_chain(llm,prompt)
@@ -172,5 +256,29 @@ if input_prompt  and st.session_state.vectors is not None:
         file.write("\n" + "-"*50 + "\n\n")
     
     st.write(response['answer'])
+
+
+    sql_query_match = re.search(r"(SELECT.*?;)", response['answer'], re.DOTALL)
+    if sql_query_match:
+        sql_query = sql_query_match.group(1)
+        print("Extracted SQL Query:")
+        print(sql_query)
+        if execute_query_tool(sql_query):
+            print("Query executed successfully. Results saved to 'csv_results.csv'.")
+
+            try:
+                data = pd.read_csv(CSV_FILE_PATH)
+                st.dataframe(data)
+
+                insights = analyze_csv_with_llm(CSV_FILE_PATH)
+                st.write(insights.content)
+
+                plot_csv_data(CSV_FILE_PATH)
+            except Exception as e:
+                print( f"Error reading CSV file: {str(e)}")
+
+
+        else:
+            print("No SQL query found.")
 
 
