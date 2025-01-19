@@ -864,3 +864,729 @@ The significance of this query lies in its ability to provide insights into the 
 
 --------------------------------------------------
 
+Query: Top 10 Product Categories
+Answer: ### Translating Natural Language Query to SQL
+
+To find the top 10 product categories, we need to consider the `products` table, which contains information about each product, including its category. However, the categories are stored in their original form in the `products` table and are translated into English in the `category_names_english` table. 
+
+Given the requirement, we will focus on retrieving the top 10 product categories based on their frequency of appearance in the `products` table. This assumes that the "top" categories are those that are most commonly associated with products.
+
+### SQL Query
+
+```sql
+SELECT 
+    p.product_category, 
+    COUNT(p.product_id) AS category_count
+FROM 
+    products p
+GROUP BY 
+    p.product_category
+ORDER BY 
+    category_count DESC
+LIMIT 10;
+```
+
+### Explanation
+
+- **SELECT**: We select the `product_category` from the `products` table and count the number of `product_id` occurrences for each category using `COUNT(p.product_id)`. The count is aliased as `category_count` for clarity.
+- **FROM**: We specify the `products` table as the source of our data.
+- **GROUP BY**: To count the occurrences of each category, we group the results by `product_category`.
+- **ORDER BY**: We order the results in descending order based on `category_count` so that the most frequent categories appear first.
+- **LIMIT 10**: Finally, we limit the output to the top 10 categories.
+
+This SQL query provides a straightforward way to identify the most common product categories in the database, which can be useful for understanding product distribution, planning inventory, or analyzing customer preferences. 
+
+Note: If you also want to include the English translations of the categories, you could join the `category_names_english` table on `product_category` and include `product_category_eng` in the SELECT clause. However, based on the provided natural language query, the focus is on identifying the top categories, which can be achieved with the above query.
+
+--------------------------------------------------
+
+Query: Top 10 Product Categories
+Answer: ### Translating Natural Language Query to SQL
+
+To find the top 10 product categories, we need to consider the `products` table, which contains information about each product, including its category. However, the categories are stored in their original form in the `products` table and are translated into English in the `category_names_english` table. 
+
+Given the requirement, we will focus on retrieving the top 10 product categories based on their frequency of appearance in the `products` table. This assumes that the "top" categories are those that are most commonly associated with products.
+
+### SQL Query
+
+```sql
+SELECT 
+    p.product_category, 
+    COUNT(p.product_id) AS category_count
+FROM 
+    products p
+GROUP BY 
+    p.product_category
+ORDER BY 
+    category_count DESC
+LIMIT 10;
+```
+
+### Explanation
+
+- **SELECT**: We select the `product_category` from the `products` table and count the number of products in each category using `COUNT(p.product_id)`.
+- **FROM**: We specify the `products` table as the source of our data.
+- **GROUP BY**: We group the results by `product_category` to count the occurrences of each category.
+- **ORDER BY**: We order the results in descending order based on the count of products in each category (`category_count DESC`), so the most frequent categories appear first.
+- **LIMIT 10**: We limit the output to the top 10 categories.
+
+This query provides insight into which product categories are most prevalent in the database, which can be useful for inventory management, marketing strategies, and understanding customer preferences. 
+
+Note: If you also want to include the English translations of the categories, you would need to join the `category_names_english` table with the `products` table on the `product_category` field. However, based on the provided natural language query, the focus is solely on identifying the top categories, not necessarily translating them.
+
+--------------------------------------------------
+
+Query: Top 10 Product Categories
+Answer: ### Translating Natural Language Query to SQL
+
+To find the top 10 product categories, we need to consider the `products` table, which contains information about each product, including its category. However, the categories are stored in their original form in the `products` table and are translated into English in the `category_names_english` table. 
+
+Given the requirement, we will focus on retrieving the top 10 product categories based on their frequency of appearance in the `products` table. This assumes that the "top" categories are those that are most commonly associated with products.
+
+### SQL Query
+
+```sql
+SELECT 
+    p.product_category, 
+    COUNT(p.product_id) AS category_count
+FROM 
+    products p
+GROUP BY 
+    p.product_category
+ORDER BY 
+    category_count DESC
+LIMIT 10;
+```
+
+### Explanation
+
+- **SELECT**: We select the `product_category` from the `products` table and count the number of `product_id` occurrences for each category using `COUNT(p.product_id)`. The count is aliased as `category_count` for clarity.
+- **FROM**: We specify the `products` table as the source of our data.
+- **GROUP BY**: To count the occurrences of each category, we group the results by `product_category`.
+- **ORDER BY**: We order the results in descending order based on `category_count` so that the most frequent categories appear first.
+- **LIMIT 10**: Finally, we limit the output to the top 10 categories.
+
+This SQL query provides a straightforward way to identify the most common product categories in the database, which can be useful for understanding product distribution, planning inventory, or analyzing customer preferences. 
+
+Note: If you also want to include the English translations of the categories, you could join the `category_names_english` table on `product_category` and include `product_category_eng` in the SELECT clause. However, based on the provided natural language query, the focus is on identifying the top categories, which can be achieved with the above query.
+
+--------------------------------------------------
+
+Query: Top 10 Product Categories
+Answer: ### Translating Natural Language Query to SQL
+
+To find the top 10 product categories, we need to consider the `products` table, which contains information about each product, including its category. However, the categories are stored in their original form in the `products` table and are translated into English in the `category_names_english` table. 
+
+Given the requirement, we will focus on retrieving the top 10 product categories based on their frequency of appearance in the `products` table. This assumes that the "top" categories are those that are most commonly associated with products.
+
+### SQL Query
+
+```sql
+SELECT 
+    p.product_category, 
+    COUNT(p.product_id) AS category_count
+FROM 
+    products p
+GROUP BY 
+    p.product_category
+ORDER BY 
+    category_count DESC
+LIMIT 10;
+```
+
+### Explanation
+
+- **SELECT**: We select the `product_category` from the `products` table and count the number of `product_id` occurrences for each category using `COUNT(p.product_id)`. The count is aliased as `category_count` for clarity.
+- **FROM**: We specify the `products` table as the source of our data.
+- **GROUP BY**: To count the occurrences of each category, we group the results by `product_category`.
+- **ORDER BY**: We order the results in descending order based on `category_count` so that the most frequent categories appear first.
+- **LIMIT 10**: Finally, we limit the output to the top 10 categories.
+
+This SQL query provides a straightforward way to identify the most common product categories in the database, which can be useful for understanding product distribution, planning inventory, or analyzing customer preferences. 
+
+Note: If you also want to include the English translations of the categories, you could join the `category_names_english` table on `product_category` and include `product_category_eng` in the SELECT clause. However, based on the provided natural language query, the focus is on identifying the top categories, which can be achieved with the above query.
+
+--------------------------------------------------
+
+Query: Top 10 Product Categories
+Answer: ### Translating Natural Language Query to SQL
+
+To find the top 10 product categories, we need to consider the `products` table, which contains information about each product, including its category. However, the categories are stored in their original form in the `products` table and are translated into English in the `category_names_english` table. 
+
+Given the requirement, we will focus on retrieving the top 10 product categories based on their frequency of appearance in the `products` table. This assumes that the "top" categories are those that are most commonly associated with products.
+
+### SQL Query
+
+```sql
+SELECT 
+    p.product_category, 
+    COUNT(p.product_id) AS category_count
+FROM 
+    products p
+GROUP BY 
+    p.product_category
+ORDER BY 
+    category_count DESC
+LIMIT 10;
+```
+
+### Explanation
+
+- **SELECT**: We select the `product_category` from the `products` table and count the number of `product_id` occurrences for each category using `COUNT(p.product_id)`. The count is aliased as `category_count` for clarity.
+- **FROM**: We specify the `products` table as the source of our data.
+- **GROUP BY**: To count the occurrences of each category, we group the results by `product_category`.
+- **ORDER BY**: We order the results in descending order based on `category_count` so that the most frequent categories appear first.
+- **LIMIT 10**: Finally, we limit the output to the top 10 categories.
+
+This SQL query provides a straightforward way to identify the most common product categories in the database, which can be useful for understanding product distribution, planning inventory, or analyzing customer preferences. 
+
+Note: If you also want to include the English translations of the categories, you could join the `category_names_english` table on `product_category` and include `product_category_eng` in the SELECT clause. However, based on the provided natural language query, the focus is on identifying the top categories, which can be achieved with the above query.
+
+--------------------------------------------------
+
+Query: Top 10 cities with highest number of customers along with each city's contribution to the overall customer base as a percentage.
+Answer: To answer the natural language query, we need to write an SQL query that retrieves the top 10 cities with the highest number of customers and calculates each city's contribution to the overall customer base as a percentage.
+
+```sql
+SELECT 
+  city, 
+  COUNT(customer_id) as num_customers,
+  (COUNT(customer_id) * 100.0 / (SELECT COUNT(customer_id) FROM customers)) as percentage_contribution
+FROM 
+  customers
+GROUP BY 
+  city
+ORDER BY 
+  num_customers DESC
+LIMIT 10;
+```
+
+This SQL query works as follows:
+
+1. `SELECT city, COUNT(customer_id) as num_customers`: This selects the city and counts the number of customers in each city.
+2. `(COUNT(customer_id) * 100.0 / (SELECT COUNT(customer_id) FROM customers)) as percentage_contribution`: This calculates the percentage contribution of each city to the overall customer base. The subquery `(SELECT COUNT(customer_id) FROM customers)` retrieves the total number of customers.
+3. `FROM customers`: This specifies the table to query, which is the `customers` table.
+4. `GROUP BY city`: This groups the results by city, allowing us to count the number of customers in each city.
+5. `ORDER BY num_customers DESC`: This orders the results in descending order based on the number of customers in each city.
+6. `LIMIT 10`: This limits the results to the top 10 cities with the highest number of customers.
+
+The significance of this query lies in its ability to provide insights into the geographical distribution of customers. By identifying the top 10 cities with the highest number of customers, businesses can focus their marketing efforts and resource allocation on these areas to maximize their impact. Additionally, the percentage contribution of each city to the overall customer base helps businesses understand the relative importance of each city in their customer base.
+
+--------------------------------------------------
+
+Query: What are the category of products that sold most in the last quarter of 2017?
+Answer: To answer the natural language query, "What are the category of products that sold most in the last quarter of 2017?", we need to join several tables and apply filters based on the date. The last quarter of 2017 refers to the period from October 1, 2017, to December 31, 2017. We will use the `orders` table to filter orders by date, the `order_items` table to get the items in these orders, and the `products` table to get the product categories.
+
+```sql
+SELECT 
+    p.product_category, 
+    COUNT(oi.product_id) AS total_sales
+FROM 
+    orders o
+JOIN 
+    order_items oi ON o.order_id = oi.order_id
+JOIN 
+    products p ON oi.product_id = p.product_id
+WHERE 
+    o.purchase_timestamp >= '2017-10-01' 
+    AND o.purchase_timestamp < '2018-01-01'
+GROUP BY 
+    p.product_category
+ORDER BY 
+    total_sales DESC;
+```
+
+This SQL query does the following:
+
+1. **Joins the necessary tables**: It joins the `orders`, `order_items`, and `products` tables based on their respective keys to link orders with their items and the items with their product categories.
+
+2. **Filters orders by date**: It selects only the orders made in the last quarter of 2017 by filtering the `purchase_timestamp` in the `orders` table.
+
+3. **Groups by product category and counts sales**: It groups the results by `product_category` from the `products` table and counts the number of times each category appears (which represents the total sales of products in that category during the specified period).
+
+4. **Orders the results by total sales**: Finally, it orders the results in descending order based on `total_sales`, so the categories with the most sales appear at the top.
+
+This query's significance lies in its ability to analyze sales data over a specific period, helping in understanding which product categories were most popular during that time. This information can be crucial for inventory management, marketing strategies, and understanding customer preferences.
+
+--------------------------------------------------
+
+Query: What are the products that sold most in the first quarter of 2017?
+Answer: To answer the natural language query "What are the products that sold most in the first quarter of 2017?", we need to join the `orders` table with the `order_items` table and then join the result with the `products` table. We also need to filter the orders to only include those made in the first quarter of 2017.
+
+```sql
+SELECT p.product_id, p.name_length, p.description_length, 
+       COUNT(oi.item_id) as total_sold
+FROM orders o
+JOIN order_items oi ON o.order_id = oi.order_id
+JOIN products p ON oi.product_id = p.product_id
+WHERE EXTRACT(QUARTER FROM o.purchase_timestamp) = 1
+  AND EXTRACT(YEAR FROM o.purchase_timestamp) = 2017
+GROUP BY p.product_id, p.name_length, p.description_length
+ORDER BY total_sold DESC;
+```
+
+This SQL query works as follows:
+
+1. It joins the `orders` table with the `order_items` table on the `order_id` column to get all the items in each order.
+2. It then joins the result with the `products` table on the `product_id` column to get the product information for each item.
+3. It filters the orders to only include those made in the first quarter of 2017 by using the `EXTRACT` function to get the quarter and year from the `purchase_timestamp` column.
+4. It groups the result by product and counts the number of times each product appears (i.e., the number of times it was sold).
+5. Finally, it orders the result by the total number of times each product was sold in descending order, so the products that sold the most appear at the top.
+
+The significance of this query is that it allows us to analyze sales data and identify the best-selling products during a specific time period. This information can be useful for inventory management, marketing, and sales strategy.
+
+--------------------------------------------------
+
+Query: What are the product categories that sold most in the second quarter of 2017?
+Answer: To answer the natural language query, "What are the product categories that sold most in the second quarter of 2017?", we need to join several tables and apply filters based on the given conditions. The query involves identifying the product categories, the sales (which can be inferred from order items), and the time frame (second quarter of 2017).
+
+Here's how we can approach it:
+
+1. **Identify the Relevant Tables**: The main tables involved are `orders`, `order_items`, `products`, and `category_names_english`. The `orders` table provides the timestamp of when the order was placed, `order_items` links orders to products, `products` contains product information including category, and `category_names_english` translates product categories into English.
+
+2. **Filter Orders by Time**: We need to filter orders placed in the second quarter of 2017, which includes April, May, and June of 2017.
+
+3. **Link Orders to Products**: Through `order_items`, we can link orders to the products sold.
+
+4. **Identify Product Categories**: From the `products` table, we can get the product categories.
+
+5. **Translate Categories (Optional)**: If the categories need to be in English, we can use the `category_names_english` table.
+
+6. **Count Sales by Category**: Finally, we count how many of each product category were sold during this period.
+
+Here is the SQL query that accomplishes this:
+
+```sql
+SELECT 
+    T1.product_category, 
+    COUNT(T2.order_id) AS total_sales
+FROM 
+    products AS T1
+INNER JOIN 
+    order_items AS T2 ON T1.product_id = T2.product_id
+INNER JOIN 
+    orders AS T3 ON T2.order_id = T3.order_id
+WHERE 
+    T3.purchase_timestamp >= '2017-04-01' 
+    AND T3.purchase_timestamp < '2017-07-01'
+GROUP BY 
+    T1.product_category
+ORDER BY 
+    total_sales DESC;
+```
+
+This query:
+- Joins `products`, `order_items`, and `orders` tables based on their respective keys.
+- Filters orders to include only those made in the second quarter of 2017.
+- Groups the results by product category and counts the number of orders (which represents sales) for each category.
+- Orders the results by the total sales in descending order, showing the categories with the most sales first.
+
+The significance of this query lies in its ability to provide insights into sales trends over a specific period, helping in understanding consumer preferences and demand patterns. This information can be crucial for inventory management, marketing strategies, and overall business planning.
+
+--------------------------------------------------
+
+Query: What is the capital of France?
+Answer: No SQL query generated
+
+The provided schema and table details do not contain any information related to countries or their capitals. The tables are focused on e-commerce data, including products, orders, customers, sellers, and geolocation information for Brazilian ZIP codes. Therefore, it is not possible to generate an SQL query to answer the question about the capital of France based on the provided context.
+
+--------------------------------------------------
+
+Query: What is the capital of France?
+Answer: No SQL query generated
+
+The provided schema and table details do not contain any information related to countries or their capitals. The tables are focused on e-commerce data, including products, orders, customers, sellers, and geolocation information for Brazilian ZIP codes. Therefore, it is not possible to generate an SQL query to answer the question about the capital of France based on the provided context.
+
+--------------------------------------------------
+
+Query: What is the capital of France?
+Answer: Sorry.. Question is out of the context provided
+
+--------------------------------------------------
+
+Query: Top 2 product categories
+Answer: ### Translating Natural Language Query to SQL Query
+
+To find the top 2 product categories, we need to consider the frequency of each category in the `products` table. However, the `products` table does not directly provide the category names in English; instead, it references the `product_category` column, which can be translated using the `category_names_english` table. 
+
+The following SQL query will retrieve the top 2 product categories based on their frequency of appearance in the `products` table, along with their English translations:
+
+```sql
+SELECT 
+    cne.product_category_eng, 
+    COUNT(p.product_id) AS category_count
+FROM 
+    products p
+JOIN 
+    category_names_english cne ON p.product_category = cne.product_category
+GROUP BY 
+    cne.product_category_eng
+ORDER BY 
+    category_count DESC
+LIMIT 2;
+```
+
+### Explanation of the Query
+
+1. **Joining Tables**: The query starts by joining the `products` table (`p`) with the `category_names_english` table (`cne`) on the `product_category` field. This join is necessary to translate the product categories into English.
+
+2. **Grouping and Counting**: The query then groups the results by the English category names (`product_category_eng`) and counts the number of products in each category using `COUNT(p.product_id)`.
+
+3. **Sorting and Limiting**: The results are sorted in descending order based on the count of products in each category (`category_count DESC`), ensuring that the most frequent categories appear first. Finally, the query limits the output to the top 2 categories using `LIMIT 2`.
+
+This query is significant because it provides insights into the most common product categories in the database, which can be useful for inventory management, marketing strategies, and understanding customer preferences.
+
+--------------------------------------------------
+
+Query: Top 2 product categories
+Answer: ### SQL Query to Retrieve Top 2 Product Categories
+
+To find the top 2 product categories, we need to count the occurrences of each product category in the `products` table and then order the results in descending order based on the count. We will use the `category_names_english` table to get the English translations of the product categories.
+
+```sql
+SELECT 
+  cne.product_category_eng, 
+  COUNT(p.product_id) as category_count
+FROM 
+  products p
+JOIN 
+  category_names_english cne ON p.product_category = cne.product_category
+GROUP BY 
+  cne.product_category_eng
+ORDER BY 
+  category_count DESC
+LIMIT 2;
+```
+
+### Explanation of the Query
+
+This SQL query performs the following operations:
+
+1. **Joining Tables**: It joins the `products` table with the `category_names_english` table based on the `product_category` column. This allows us to get the English translations of the product categories.
+2. **Grouping and Counting**: It groups the joined table by the `product_category_eng` column and counts the number of rows in each group using the `COUNT` function. This gives us the count of products in each category.
+3. **Sorting and Limiting**: It sorts the results in descending order based on the count of products in each category using the `ORDER BY` clause. Finally, it limits the results to the top 2 categories using the `LIMIT` clause.
+
+The significance of this query lies in its ability to provide insights into the most popular product categories in the database. By analyzing the top categories, businesses can identify trends, optimize their product offerings, and make informed decisions about inventory management and marketing strategies.
+
+--------------------------------------------------
+
+Query: Top 2 product categories
+Answer: ### SQL Query to Retrieve Top 2 Product Categories
+
+To find the top 2 product categories, we need to count the occurrences of each product category in the `products` table and then order the results in descending order based on the count. We will use the `category_names_english` table to get the English translations of the product categories.
+
+```sql
+SELECT 
+  cne.product_category_eng, 
+  COUNT(p.product_id) as category_count
+FROM 
+  products p
+JOIN 
+  category_names_english cne ON p.product_category = cne.product_category
+GROUP BY 
+  cne.product_category_eng
+ORDER BY 
+  category_count DESC
+LIMIT 2;
+```
+
+### Explanation of the Query
+
+This SQL query performs the following operations:
+
+1. **Joining Tables**: It joins the `products` table with the `category_names_english` table based on the `product_category` column. This allows us to get the English translations of the product categories.
+2. **Grouping and Counting**: It groups the joined table by the `product_category_eng` column and counts the number of rows in each group using the `COUNT` function. This gives us the count of products in each category.
+3. **Sorting and Limiting**: It sorts the results in descending order based on the count of products in each category using the `ORDER BY` clause. Finally, it limits the results to the top 2 categories using the `LIMIT` clause.
+
+The significance of this query lies in its ability to provide insights into the most popular product categories in the database. By analyzing the top categories, businesses can identify trends, optimize their product offerings, and make informed decisions about inventory management and marketing strategies.
+
+--------------------------------------------------
+
+Query: Top 2 product categories
+Answer: ### SQL Query to Retrieve Top 2 Product Categories
+
+To find the top 2 product categories, we need to count the occurrences of each product category in the `products` table and then order the results in descending order based on the count. We will use the `category_names_english` table to get the English translations of the product categories.
+
+```sql
+SELECT 
+  cne.product_category_eng, 
+  COUNT(p.product_id) as category_count
+FROM 
+  products p
+JOIN 
+  category_names_english cne ON p.product_category = cne.product_category
+GROUP BY 
+  cne.product_category_eng
+ORDER BY 
+  category_count DESC
+LIMIT 2;
+```
+
+### Explanation of the Query
+
+This SQL query performs the following operations:
+
+1. **Joining Tables**: It joins the `products` table with the `category_names_english` table based on the `product_category` column. This allows us to get the English translations of the product categories.
+2. **Grouping and Counting**: It groups the joined table by the `product_category_eng` column and counts the number of rows in each group using the `COUNT` function. This gives us the count of products in each category.
+3. **Sorting and Limiting**: It sorts the results in descending order based on the count of products in each category using the `ORDER BY` clause. Finally, it limits the results to the top 2 categories using the `LIMIT` clause.
+
+The significance of this query lies in its ability to provide insights into the most popular product categories in the database. By analyzing the top categories, businesses can identify trends, optimize their product offerings, and make informed decisions about inventory management and marketing strategies.
+
+--------------------------------------------------
+
+Query: Top 2 product categories
+Answer: ### SQL Query to Retrieve Top 2 Product Categories
+
+To find the top 2 product categories, we need to count the occurrences of each product category in the `products` table and then order the results in descending order based on the count. We will use the `category_names_english` table to get the English translations of the product categories.
+
+```sql
+SELECT 
+  cne.product_category_eng, 
+  COUNT(p.product_id) as category_count
+FROM 
+  products p
+JOIN 
+  category_names_english cne ON p.product_category = cne.product_category
+GROUP BY 
+  cne.product_category_eng
+ORDER BY 
+  category_count DESC
+LIMIT 2;
+```
+
+### Explanation of the Query
+
+This SQL query performs the following operations:
+
+1. **Joining Tables**: It joins the `products` table with the `category_names_english` table based on the `product_category` column. This allows us to get the English translations of the product categories.
+2. **Grouping and Counting**: It groups the joined table by the `product_category_eng` column and counts the number of rows in each group using the `COUNT` function. This gives us the count of products in each category.
+3. **Sorting and Limiting**: It sorts the results in descending order based on the count of products in each category using the `ORDER BY` clause. Finally, it limits the results to the top 2 categories using the `LIMIT` clause.
+
+The significance of this query lies in its ability to provide insights into the most popular product categories in the database. By analyzing the top categories, businesses can identify trends, optimize their product offerings, and make informed decisions about inventory management and marketing strategies.
+
+--------------------------------------------------
+
+Query: Top 2 product categories
+Answer: ### SQL Query to Retrieve Top 2 Product Categories
+
+To find the top 2 product categories, we need to count the occurrences of each product category in the `products` table and then order the results in descending order based on the count. We will use the `category_names_english` table to get the English translations of the product categories.
+
+```sql
+SELECT 
+  cne.product_category_eng, 
+  COUNT(p.product_id) as category_count
+FROM 
+  products p
+JOIN 
+  category_names_english cne ON p.product_category = cne.product_category
+GROUP BY 
+  cne.product_category_eng
+ORDER BY 
+  category_count DESC
+LIMIT 2;
+```
+
+### Explanation of the Query
+
+This SQL query performs the following operations:
+
+1. **Joining Tables**: It joins the `products` table with the `category_names_english` table based on the `product_category` column. This allows us to get the English translations of the product categories.
+2. **Grouping and Counting**: It groups the joined table by the `product_category_eng` column and counts the number of rows in each group using the `COUNT` function. This gives us the count of products in each category.
+3. **Sorting and Limiting**: It sorts the results in descending order based on the count of products in each category using the `ORDER BY` clause. Finally, it limits the results to the top 2 categories using the `LIMIT` clause.
+
+The significance of this query lies in its ability to provide insights into the most popular product categories in the database. By analyzing the top categories, businesses can identify trends, optimize their product offerings, and make informed decisions about inventory management and marketing strategies.
+
+--------------------------------------------------
+
+Query: Top 2 product categories
+Answer: ### SQL Query to Retrieve Top 2 Product Categories
+
+To find the top 2 product categories, we need to count the occurrences of each product category in the `products` table and then order the results in descending order based on the count. We will use the `category_names_english` table to get the English translations of the product categories.
+
+```sql
+SELECT 
+  cne.product_category_eng, 
+  COUNT(p.product_id) as category_count
+FROM 
+  products p
+JOIN 
+  category_names_english cne ON p.product_category = cne.product_category
+GROUP BY 
+  cne.product_category_eng
+ORDER BY 
+  category_count DESC
+LIMIT 2;
+```
+
+### Explanation of the Query
+
+This SQL query performs the following operations:
+
+1. **Joining Tables**: It joins the `products` table with the `category_names_english` table based on the `product_category` column. This allows us to get the English translations of the product categories.
+2. **Grouping and Counting**: It groups the joined table by the `product_category_eng` column and counts the number of rows in each group using the `COUNT` function. This gives us the count of products in each category.
+3. **Sorting and Limiting**: It sorts the results in descending order based on the count of products in each category using the `ORDER BY` clause. Finally, it limits the results to the top 2 categories using the `LIMIT` clause.
+
+The significance of this query lies in its ability to provide insights into the most popular product categories in the database. By analyzing the top categories, businesses can identify trends, optimize their product offerings, and make informed decisions about inventory management and marketing strategies.
+
+--------------------------------------------------
+
+Query: Top 2 product categories
+Answer: ### SQL Query to Retrieve Top 2 Product Categories
+
+To find the top 2 product categories, we need to count the occurrences of each product category in the `products` table and then order the results in descending order based on the count. We will use the `category_names_english` table to get the English translations of the product categories.
+
+```sql
+SELECT 
+  cne.product_category_eng, 
+  COUNT(p.product_id) as category_count
+FROM 
+  products p
+JOIN 
+  category_names_english cne ON p.product_category = cne.product_category
+GROUP BY 
+  cne.product_category_eng
+ORDER BY 
+  category_count DESC
+LIMIT 2;
+```
+
+### Explanation of the Query
+
+This SQL query performs the following operations:
+
+1. **Joining Tables**: It joins the `products` table with the `category_names_english` table based on the `product_category` column. This allows us to get the English translations of the product categories.
+2. **Grouping and Counting**: It groups the joined table by the `product_category_eng` column and counts the number of rows in each group using the `COUNT` function. This gives us the count of products in each category.
+3. **Sorting and Limiting**: It sorts the results in descending order based on the count of products in each category using the `ORDER BY` clause. Finally, it limits the results to the top 2 categories using the `LIMIT` clause.
+
+The significance of this query lies in its ability to provide insights into the most popular product categories in the database. By analyzing the top categories, businesses can identify trends, optimize their product offerings, and make informed decisions about inventory management and marketing strategies.
+
+--------------------------------------------------
+
+Query: Top 2 product categories
+Answer: ### SQL Query to Retrieve Top 2 Product Categories
+
+To find the top 2 product categories, we need to count the occurrences of each product category in the `products` table and then order the results in descending order based on the count. We will use the `category_names_english` table to get the English translations of the product categories.
+
+```sql
+SELECT 
+  cne.product_category_eng, 
+  COUNT(p.product_id) as category_count
+FROM 
+  products p
+JOIN 
+  category_names_english cne ON p.product_category = cne.product_category
+GROUP BY 
+  cne.product_category_eng
+ORDER BY 
+  category_count DESC
+LIMIT 2;
+```
+
+### Explanation of the Query
+
+This SQL query performs the following operations:
+
+1. **Joining Tables**: It joins the `products` table with the `category_names_english` table based on the `product_category` column. This allows us to get the English translations of the product categories.
+2. **Grouping and Counting**: It groups the joined table by the `product_category_eng` column and counts the number of rows in each group using the `COUNT` function. This gives us the count of products in each category.
+3. **Sorting and Limiting**: It sorts the results in descending order based on the count of products in each category using the `ORDER BY` clause. Finally, it limits the results to the top 2 categories using the `LIMIT` clause.
+
+The significance of this query lies in its ability to provide insights into the most popular product categories in the database. By analyzing the top categories, businesses can identify trends, optimize their product offerings, and make informed decisions about inventory management and marketing strategies.
+
+--------------------------------------------------
+
+Query: Top 2 product categories
+Answer: ### SQL Query to Retrieve Top 2 Product Categories
+
+To find the top 2 product categories, we need to count the occurrences of each product category in the `products` table and then order the results in descending order based on the count. We will use the `category_names_english` table to get the English translations of the product categories.
+
+```sql
+SELECT 
+  cne.product_category_eng, 
+  COUNT(p.product_id) as category_count
+FROM 
+  products p
+JOIN 
+  category_names_english cne ON p.product_category = cne.product_category
+GROUP BY 
+  cne.product_category_eng
+ORDER BY 
+  category_count DESC
+LIMIT 2;
+```
+
+### Explanation of the Query
+
+This SQL query performs the following operations:
+
+1. **Joining Tables**: It joins the `products` table with the `category_names_english` table based on the `product_category` column. This allows us to get the English translations of the product categories.
+2. **Grouping and Counting**: It groups the joined table by the `product_category_eng` column and counts the number of rows in each group using the `COUNT` function. This gives us the count of products in each category.
+3. **Sorting and Limiting**: It sorts the results in descending order based on the count of products in each category using the `ORDER BY` clause. Finally, it limits the results to the top 2 categories using the `LIMIT` clause.
+
+The significance of this query lies in its ability to provide insights into the most popular product categories in the database. By analyzing the top categories, businesses can identify trends, optimize their product offerings, and make informed decisions about inventory management and marketing strategies.
+
+--------------------------------------------------
+
+Query: Top 2 product categories
+Answer: ### SQL Query to Retrieve Top 2 Product Categories
+
+To find the top 2 product categories, we need to count the occurrences of each product category in the `products` table and then order the results in descending order based on the count. We will use the `category_names_english` table to get the English translations of the product categories.
+
+```sql
+SELECT 
+  cne.product_category_eng, 
+  COUNT(p.product_id) as category_count
+FROM 
+  products p
+JOIN 
+  category_names_english cne ON p.product_category = cne.product_category
+GROUP BY 
+  cne.product_category_eng
+ORDER BY 
+  category_count DESC
+LIMIT 2;
+```
+
+### Explanation of the Query
+
+This SQL query performs the following operations:
+
+1. **Joining Tables**: It joins the `products` table with the `category_names_english` table based on the `product_category` column. This allows us to get the English translations of the product categories.
+2. **Grouping and Counting**: It groups the joined table by the `product_category_eng` column and counts the number of rows in each group using the `COUNT` function. This gives us the count of products in each category.
+3. **Sorting and Limiting**: It sorts the results in descending order based on the count of products in each category using the `ORDER BY` clause. Finally, it limits the results to the top 2 categories using the `LIMIT` clause.
+
+The significance of this query lies in its ability to provide insights into the most popular product categories in the database. By analyzing the top categories, businesses can identify trends, optimize their product offerings, and make informed decisions about inventory management and marketing strategies.
+
+--------------------------------------------------
+
+Query: Top 2 product categories
+Answer: ### SQL Query to Retrieve Top 2 Product Categories
+
+To find the top 2 product categories, we need to count the occurrences of each product category in the `products` table and then order the results in descending order based on the count. We will use the `category_names_english` table to get the English translations of the product categories.
+
+```sql
+SELECT 
+  cne.product_category_eng, 
+  COUNT(p.product_id) as category_count
+FROM 
+  products p
+JOIN 
+  category_names_english cne ON p.product_category = cne.product_category
+GROUP BY 
+  cne.product_category_eng
+ORDER BY 
+  category_count DESC
+LIMIT 2;
+```
+
+### Explanation of the Query
+
+This SQL query performs the following operations:
+
+1. **Joining Tables**: It joins the `products` table with the `category_names_english` table based on the `product_category` column. This allows us to get the English translations of the product categories.
+2. **Grouping and Counting**: It groups the joined table by the `product_category_eng` column and counts the number of rows in each group using the `COUNT` function. This gives us the count of products in each category.
+3. **Sorting and Limiting**: It sorts the results in descending order based on the count of products in each category using the `ORDER BY` clause. Finally, it limits the results to the top 2 categories using the `LIMIT` clause.
+
+The significance of this query lies in its ability to provide insights into the most popular product categories in the database. By analyzing the top categories, businesses can identify trends, optimize their product offerings, and make informed decisions about inventory management and marketing strategies.
+
+--------------------------------------------------
+

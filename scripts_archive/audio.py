@@ -10,10 +10,13 @@ os.environ["OPENAI_API_KEY"]=os.getenv("OPENAI_API_KEY")
 def audiototextOpenAI(audio_value):
 
     transcription = None
+    transcription_output = None
 
     if audio_value:
         st.audio(audio_value)
         # Save the audio file to the root folder
+
+        print('audio code called...')
         audio_bytes = audio_value.getvalue()
         with open("recorded_audio.wav", "wb") as audio_file:
             audio_file.write(audio_bytes)
@@ -26,4 +29,6 @@ def audiototextOpenAI(audio_value):
         )
         # st.write(transcription.text)
 
-    return transcription
+        transcription_output = transcription.text
+
+    return transcription_output
