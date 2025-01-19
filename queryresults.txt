@@ -707,3 +707,160 @@ LIMIT 10;
 
 --------------------------------------------------
 
+Query: What is Olist dataset about?
+Answer: The Olist dataset is about Brazilian e-commerce and contains information of 100,000 orders from 2016 to 2018 made at multiple marketplaces in Brazil. It includes various features that allow viewing an order from multiple dimensions such as order status, price, payment and freight performance, customer location, product attributes, and customer reviews. The dataset also includes a geolocation dataset that relates Brazilian zip codes to latitude and longitude coordinates. The data has been anonymised and references to companies and partners have been replaced with the names of Game of Thrones houses.
+
+--------------------------------------------------
+
+Query: What is Olist dataset about?
+Answer: The Olist dataset is about Brazilian e-commerce and contains information of 100k orders made from 2016 to 2018 at multiple marketplaces in Brazil. The dataset includes various features such as order status, price, payment and freight performance, customer location, product attributes, and customer reviews. It also includes a geolocation dataset that relates Brazilian zip codes to lat/long coordinates. The data has been anonymised and references to companies and partners have been replaced with names of Game of Thrones houses.
+
+--------------------------------------------------
+
+Query: What is Olist dataset about?
+Answer: The Olist dataset is about Brazilian e-commerce orders made at Olist Store. It contains information of 100,000 orders from 2016 to 2018 made at multiple marketplaces in Brazil. The dataset includes various features such as order status, price, payment and freight performance, customer location, product attributes, and customer reviews. It also includes a geolocation dataset that relates Brazilian zip codes to latitude and longitude coordinates. The data has been anonymised and references to companies and partners have been replaced with names of Game of Thrones houses.
+
+--------------------------------------------------
+
+Query: What is Olist dataset about?
+Answer: The Olist dataset is about Brazilian e-commerce public data of orders made at Olist Store. It contains information of 100,000 orders from 2016 to 2018 made at multiple marketplaces in Brazil. The dataset includes various features that allow viewing an order from multiple dimensions such as order status, price, payment and freight performance, customer location, product attributes, and customer reviews. The dataset also includes a geolocation dataset that relates Brazilian zip codes to latitude and longitude coordinates. The data has been anonymised and references to companies and partners in the review text have been replaced with the names of Game of Thrones great houses.
+
+--------------------------------------------------
+
+Query: What are the top 10 cities with the highest number of customers, along with each city's contribution to the overall customer base (as a percentage) and the cumulative percentage of the customer base, sorted in descending order of customer count?
+Answer: ```sql
+WITH city_counts AS (
+    SELECT city, COUNT(customer_id) AS customer_count
+    FROM customers
+    GROUP BY city
+),
+total_customers AS (
+    SELECT COUNT(customer_id) AS total_count
+    FROM customers
+)
+
+SELECT city, 
+       customer_count, 
+       (customer_count * 100.0 / total_count) AS percentage,
+       SUM(customer_count) OVER (ORDER BY customer_count DESC ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) * 100.0 / total_count AS cumulative_percentage
+FROM city_counts, total_customers
+ORDER BY customer_count DESC
+LIMIT 10;
+```
+
+This SQL query first creates a subquery `city_counts` that groups the customers by city and counts the number of customers in each city. It also creates a subquery `total_customers` that counts the total number of customers. 
+
+The main query then selects the city, the count of customers in that city, the percentage of the total customer base that each city represents, and the cumulative percentage of the customer base. The percentage is calculated by dividing the count of customers in each city by the total count of customers and multiplying by 100. The cumulative percentage is calculated using a window function that sums the count of customers in all cities with a higher or equal count of customers, divides by the total count of customers, and multiplies by 100. 
+
+The results are ordered in descending order by the count of customers, and only the top 10 cities are returned.
+
+--------------------------------------------------
+
+Query: What are the top 10 cities with the highest number of customers, along with each city's contribution to the overall customer base (as a percentage) and the cumulative percentage of the customer base, sorted in descending order of customer count?
+Answer: To answer the natural language query, we need to write an SQL query that retrieves the top 10 cities with the highest number of customers, calculates each city's contribution to the overall customer base as a percentage, and computes the cumulative percentage of the customer base. We will use the `customers` table to get the city of each customer and the `COUNT` aggregation function to count the number of customers in each city.
+
+```sql
+WITH city_customer_count AS (
+  SELECT city, COUNT(customer_id) as customer_count
+  FROM customers
+  GROUP BY city
+),
+total_customers AS (
+  SELECT COUNT(customer_id) as total
+  FROM customers
+),
+city_percentages AS (
+  SELECT 
+    city, 
+    customer_count, 
+    ROUND((customer_count * 100.0) / (SELECT total FROM total_customers), 2) as percentage
+  FROM city_customer_count
+),
+ranked_cities AS (
+  SELECT 
+    city, 
+    customer_count, 
+    percentage,
+    SUM(percentage) OVER (ORDER BY customer_count DESC) as cumulative_percentage
+  FROM city_percentages
+)
+SELECT 
+  city, 
+  customer_count, 
+  percentage, 
+  cumulative_percentage
+FROM ranked_cities
+ORDER BY customer_count DESC
+LIMIT 10;
+```
+
+This SQL query works as follows:
+
+1. The first Common Table Expression (CTE), `city_customer_count`, groups the `customers` table by the `city` column and counts the number of customers in each city using the `COUNT` aggregation function.
+
+2. The second CTE, `total_customers`, calculates the total number of customers in the `customers` table.
+
+3. The third CTE, `city_percentages`, calculates the percentage of customers in each city by dividing the customer count for each city by the total number of customers and multiplying by 100. The result is rounded to two decimal places.
+
+4. The fourth CTE, `ranked_cities`, calculates the cumulative percentage of customers for each city by using a window function (`SUM` with `OVER` clause) to sum up the percentages in descending order of customer count.
+
+5. Finally, the main query selects the top 10 cities with the highest number of customers, along with each city's contribution to the overall customer base as a percentage and the cumulative percentage of the customer base, sorted in descending order of customer count.
+
+The significance of this query lies in its ability to provide insights into the geographical distribution of customers, which can be useful for businesses to understand their customer base and make informed decisions about marketing strategies, resource allocation, and expansion plans.
+
+--------------------------------------------------
+
+Query: What are the top 10 cities with the highest number of customers, along with each city's contribution to the overall customer base (as a percentage) and the cumulative percentage of the customer base, sorted in descending order of customer count?
+Answer: To answer the natural language query, we need to write an SQL query that retrieves the top 10 cities with the highest number of customers, calculates each city's contribution to the overall customer base as a percentage, and computes the cumulative percentage of the customer base. We will use the `customers` table to get the city of each customer and the `COUNT` aggregation function to count the number of customers in each city.
+
+```sql
+WITH city_customer_count AS (
+  SELECT city, COUNT(customer_id) as customer_count
+  FROM customers
+  GROUP BY city
+),
+total_customers AS (
+  SELECT COUNT(customer_id) as total
+  FROM customers
+),
+city_percentages AS (
+  SELECT 
+    city,
+    customer_count,
+    ROUND(100.0 * customer_count / (SELECT total FROM total_customers), 2) as percentage
+  FROM city_customer_count
+),
+ranked_cities AS (
+  SELECT 
+    city,
+    customer_count,
+    percentage,
+    SUM(percentage) OVER (ORDER BY customer_count DESC) as cumulative_percentage
+  FROM city_percentages
+)
+SELECT 
+  city,
+  customer_count,
+  percentage,
+  cumulative_percentage
+FROM ranked_cities
+ORDER BY customer_count DESC
+LIMIT 10;
+```
+
+This SQL query works as follows:
+
+1. The first Common Table Expression (CTE), `city_customer_count`, groups the `customers` table by the `city` column and counts the number of customers in each city using the `COUNT` aggregation function.
+
+2. The second CTE, `total_customers`, calculates the total number of customers in the `customers` table.
+
+3. The third CTE, `city_percentages`, calculates the percentage of customers in each city by dividing the customer count for each city by the total number of customers and multiplying by 100. The result is rounded to two decimal places.
+
+4. The fourth CTE, `ranked_cities`, calculates the cumulative percentage of customers for each city by using a window function (`SUM` with `OVER` clause) to sum up the percentages in descending order of customer count.
+
+5. Finally, the main query selects the top 10 cities with the highest customer count, along with their corresponding customer count, percentage, and cumulative percentage, and sorts the results in descending order of customer count.
+
+The significance of this query lies in its ability to provide insights into the geographical distribution of customers, which can be useful for businesses to understand their customer base and make informed decisions about marketing strategies, resource allocation, and expansion plans.
+
+--------------------------------------------------
+

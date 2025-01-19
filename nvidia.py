@@ -74,11 +74,56 @@
 
 
 
+# from langchain_nvidia_ai_endpoints import ChatNVIDIA
+
+# client = ChatNVIDIA(
+#   model="mistralai/mistral-7b-instruct-v0.3",
+#   api_key="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", 
+#   temperature=0.2,
+#   top_p=0.7,
+#   max_tokens=1024,
+# )
+
+# for chunk in client.stream([{"role":"user","content":"Write a limerick about the wonders of GPU computing."}]): 
+#   print(chunk.content, end="")
+
+
+# from langchain_nvidia_ai_endpoints import ChatNVIDIA
+
+# client =ChatNVIDIA(
+#   model="mistralai/mistral-7b-instruct-v0.3",
+#   api_key="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", 
+#   temperature=0.2,
+#   top_p=0.7,
+#   max_tokens=1024,
+# )
+
+# for chunk in client.stream([{"role":"user","content":"Write a limerick about the wonders of GPU computing."}]): 
+#   print(chunk.content, end="")
+
+
+
+
+# from langchain_nvidia_ai_endpoints import ChatNVIDIA
+
+# client = ChatNVIDIA(
+#   model="meta/llama-3.3-70b-instruct",
+#   api_key="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", 
+#   temperature=0.2,
+#   top_p=0.7,
+#   max_tokens=1024,
+# )
+
+# for chunk in client.stream([{"role":"user","content":"Write a limerick about the wonders of GPU computing."}]): 
+#   print(chunk.content, end="")
+
+  
+
 from langchain_nvidia_ai_endpoints import ChatNVIDIA
 
 client = ChatNVIDIA(
-  model="mistralai/mistral-7b-instruct-v0.3",
-  api_key="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", 
+  model="meta/llama-3.3-70b-instruct",
+  api_key="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", 
   temperature=0.2,
   top_p=0.7,
   max_tokens=1024,
@@ -87,3 +132,4 @@ client = ChatNVIDIA(
 for chunk in client.stream([{"role":"user","content":"Write a limerick about the wonders of GPU computing."}]): 
   print(chunk.content, end="")
 
+  
